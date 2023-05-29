@@ -140,7 +140,7 @@ choice3 :
 jmp endChoice
 
 choice4 :
-; call choice 4
+	CALL displayStatistics
 jmp endChoice
 
 choice5 :
@@ -167,6 +167,50 @@ CALL Crlf
 CALL WaitMsg; Press any button to continue
 ret
 displayCredit ENDP; End displayCredit
+
+; ====== displayStatistics =================================
+displayStatistics PROC			; Start displayStatistics
+
+	mov edx, OFFSET namePrompt
+	CALL WriteString
+	mov edx, OFFSET nameString
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET availableCreditPrompt
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET gamesPlayedPrompt
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET correctGuessCountPrompt
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET missedGuessCountPrompt
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET moneyWonPrompt
+	CALL WriteString
+	CALL Crlf
+
+	mov edx, OFFSET moneyLostPrompt
+	CALL WriteString
+	CALL Crlf
+
+	CALL Crlf
+	mov edx, OFFSET returnToMenuPrompt
+	CALL WriteString
+
+	CALL Crlf
+
+	CALL WaitMsg
+
+	ret
+displayStatistics ENDP
 
 end main
 
